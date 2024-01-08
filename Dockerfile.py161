@@ -1,0 +1,17 @@
+FROM gcc:4.7.4
+# FROM yakimka/gcc474
+
+ADD https://legacy.python.org/download/releases/1.6.1/Python-1.6.1.tar.gz? /source/Python-1.6.1.tar.gz
+
+RUN mkdir /build && \
+    tar -xzf /source/Python-1.6.1.tar.gz -C /build && \
+    cd /build/Python-1.6.1 && \
+    ./configure --prefix=/usr/local --enable-optimizations --enable-unicode=ucs4 && \
+    make && \
+    make altinstall && \
+    rm -rf /build && \
+    ln -sf /usr/local/bin/python1.6 /usr/bin/python
+
+WORKDIR /
+
+CMD ["python"]

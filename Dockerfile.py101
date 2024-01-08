@@ -1,0 +1,18 @@
+FROM gcc:4.7.4
+# FROM yakimka/gcc474
+
+ADD https://legacy.python.org/download/releases/src/python1.0.1.tar.gz /source/python-1.0.1.tar.gz
+
+RUN mkdir /build && \
+    tar -xzf /source/python-1.0.1.tar.gz -C /build && \
+    cd /build/python-1.0.1 && \
+    (cd Objects && sed -i 's/CFLAGS=\t\t\$(OPT) -I\$(INCLDIR) -I.. \$(DEFS)/CFLAGS=\t\t\$(OPT) -std=c89 -I\$(INCLDIR) -I.. \$(DEFS)/' Makefile.in) && \
+    ./configure --prefix=/usr/local --enable-optimizations --enable-unicode=ucs4 && \
+    make && \
+    make install && \
+    rm -rf /build && \
+    ln -sf /usr/local/bin/python1.6 /usr/bin/python
+
+WORKDIR /
+
+CMD ["python"]

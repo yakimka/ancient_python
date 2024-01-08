@@ -1,0 +1,14 @@
+FROM gcc:4.7.4
+# FROM yakimka/gcc474
+
+RUN mkdir -p /source/python-0.9.1 && \
+    git config --global http.sslVerify false && \
+    git clone https://github.com/smontanaro/python-0.9.1.git /source/python-0.9.1 && \
+    cd /source/python-0.9.1/src && \
+    make && \
+    chmod +x python && \
+    ln -sf /source/python-0.9.1/src/python /usr/bin/python
+
+WORKDIR /source/python-0.9.1/src
+
+CMD ["python"]
