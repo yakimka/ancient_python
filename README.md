@@ -2,16 +2,14 @@
 
 Just repo with dockerfiles for building ancient python versions.
 
-- [Python 0.9.1](https://hub.docker.com/r/yakimka/python091)
-- [Python 1.0.1](https://hub.docker.com/r/yakimka/python101)
-- [Python 1.6.1](https://hub.docker.com/r/yakimka/python161)
+- [Docker Hub](https://hub.docker.com/r/yakimka/ancient_python)
 
 ## Usage
 
 ```bash
-docker run --rm -it yakimka/python091
-docker run --rm -it yakimka/python101
-docker run --rm -it yakimka/python161
+docker run --rm -it yakimka/ancient_python:0.9.1
+docker run --rm -it yakimka/ancient_python:1.0.1
+docker run --rm -it yakimka/ancient_python:1.6.1
 ```
 
 ## Build
