@@ -10,6 +10,7 @@ RUN mkdir /build && \
     (cd Objects && sed -i 's/CFLAGS=\t\t\$(OPT) -I\$(INCLDIR) -I.. \$(DEFS)/CFLAGS=\t\t\$(OPT) -std=c89 -I\$(INCLDIR) -I.. \$(DEFS)/' Makefile.in) && \
     make && \
     make install && \
+    make libinstall && \
     rm -rf /build
 
 WORKDIR /
